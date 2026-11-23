@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أوس وملك — قريباً</title>
+<meta name="description" content="دعوة لحضور حفل زفاف الفنان أوس البنا و أ. ملك — الخميس ١٠ كانون الأول ٢٠٢٦">
+<meta name="theme-color" content="#0a0806">
+<link rel="icon" type="image/png" href="mersal-favicon.png">
+<link rel="preload" as="image" href="assets/couple.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=El+Messiri:wght@500;700&family=Tajawal:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap">
+<style>
+:root{
+  --black:#0a0806;
+  --film:#15110d;
+  --film-2:#1f1913;
+  --cream:#f3e7d0;
+  --cream-dim:#c9bba2;
+  --amber:#e2ab55;
+  --amber-soft:#f4d49a;
+  --red:#a4262c;
+  --muted:#8f8370;
+  --line:rgba(243,231,208,.18);
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Tajawal",system-ui,sans-serif;color:var(--cream);
+  background:var(--black);min-height:100vh;overflow-x:hidden;line-height:1.8;
+}
+body.locked{overflow:hidden;height:100vh}
+img{display:block;max-width:100%}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+/* film grain + flicker over everything */
+.grain{
+  position:fixed;inset:-50%;z-index:90;pointer-events:none;
+  background-image:var(--grain);opacity:.09;mix-blend-mode:overlay;
+  animation:grain .9s steps(6) infinite;
+}
+@keyframes grain{
+  0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}
+  60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}
+}
+.vignette{position:fixed;inset:0;z-index:89;pointer-events:none;
+  background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%)}
+.scratch{position:fixed;top:0;bottom:0;width:1px;z-index:91;pointer-events:none;background:rgba(255,255,255,.18);opacity:0;animation:scratch 7s linear infinite}
+.scratch.b{animation-delay:3.3s;animation-duration:9s}
+@keyframes scratch{0%,88%{opacity:0;left:22%}89%{opacity:1;left:22%}92%{opacity:.6;left:23%}93%,100%{opacity:0;left:70%}}
+
+/* ───────────── OPENING (poster → leader → title cards) ───────────── */
+#opening{position:fixed;inset:0;z-index:60;background:var(--black);transition:opacity 1.1s ease, visibility 0s linear 1.1s}
+#opening.gone{opacity:0;visibility:hidden}
+.op-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px}
+
+/* poster */
+#poster{background:
+  linear-gradient(180deg, rgba(10,8,6,.15), rgba(10,8,6,.55) 55%, var(--black) 92%),
+  url("assets/couple.jpg") center 30%/cover no-repeat;
+  filter:sepia(.25);justify-content:flex-end;padding-bottom:max(48px, env(safe-area-inset-bottom))}
+.soon{font-family:"Playfair Display",serif;font-style:italic;color:var(--amber-soft);font-size:17px;letter-spacing:2px}
+.p-names{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:clamp(60px,18vw,92px);line-height:1.05;color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,.8)}
+.p-names .amp{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:.48em;color:var(--amber);margin:0 8px;vertical-align:middle}
+.p-meta{font-family:"El Messiri",sans-serif;font-size:14px;letter-spacing:3px;color:var(--cream-dim);margin-top:6px}
+.play{
+  margin-top:26px;display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+  padding:13px 26px 13px 22px;border-radius:40px;border:1px solid var(--amber);
+  background:rgba(10,8,6,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  color:var(--cream);font:700 16px "Tajawal",sans-serif;
+  box-shadow:0 0 0 0 rgba(226,171,85,.5);animation:pulse 2.2s infinite;
+}
+.play:focus-visible{outline:2px solid var(--amber-soft);outline-offset:4px}
+.play i{width:30px;height:30px;border-radius:50%;background:var(--amber);display:grid;place-items:center;font-style:normal}
+@keyframes pulse{70%{box-shadow:0 0 0 16px rgba(226,171,85,0)}100%{box-shadow:0 0 0 0 rgba(226,171,85,0)}}
+
+/* leader countdown 3-2-1 */
+#leader{background:#1d1a16}
+.leader-ring{position:relative;width:min(70vw,300px);aspect-ratio:1}
+.leader-ring::before,.leader-ring::after{content:"";position:absolute;border-radius:50%;border:2px solid rgba(243,231,208,.7)}
+.leader-ring::before{inset:0}
+.leader-ring::after{inset:9%}
+.cross{position:absolute;inset:-30% 0;pointer-events:none;
+  background:linear-gradient(rgba(243,231,208,.5),rgba(243,231,208,.5)) center/2px 100% no-repeat,
+             linear-gradient(rgba(243,231,208,.5),rgba(243,231,208,.5)) center/160% 2px no-repeat}
+.sweep{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(rgba(243,231,208,.28) var(--a,0deg), transparent 0)}
+.lnum{position:absolute;inset:0;display:grid;place-items:center;font-family:"El Messiri",sans-serif;font-weight:700;font-size:min(36vw,150px);color:var(--cream);line-height:1}
+
+/* title cards */
+.card-txt{font-family:"Amiri",serif;font-size:clamp(24px,7vw,34px);color:var(--cream);opacity:0;animation:cardIn 1.8s ease forwards}
+.card-txt small{display:block;font-family:"Playfair Display",serif;font-style:italic;font-size:15px;color:var(--amber-soft);margin-top:10px;letter-spacing:1px}
+@keyframes cardIn{0%{opacity:0;letter-spacing:4px}25%,75%{opacity:1;letter-spacing:0}100%{opacity:0}}
+.skip{position:absolute;bottom:max(20px, env(safe-area-inset-bottom));left:20px;background:none;border:none;color:var(--muted);font:500 13px "Tajawal",sans-serif;cursor:pointer;padding:8px}
+
+/* ───────────── PAGE ───────────── */
+main{position:relative;max-width:620px;margin:0 auto}
+section{position:relative;padding:72px 16px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1.1s ease, transform 1.1s ease}
+.reveal.in{opacity:1;transform:none}
+.center{text-align:center}
+
+.scene-head{text-align:center;margin-bottom:22px}
+.scene-no{display:inline-flex;align-items:center;gap:12px;font-family:"Playfair Display",serif;font-style:italic;color:var(--amber);font-size:15px;letter-spacing:2px}
+.scene-no::before,.scene-no::after{content:"";width:34px;height:1px;background:var(--line)}
+.scene-title{font-family:"El Messiri",sans-serif;font-weight:700;font-size:clamp(30px,9vw,40px);color:var(--cream);line-height:1.3;margin-top:2px}
+
+/* hero */
+.hero{padding:0;min-height:min(100svh,900px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url("assets/couple.jpg") center 28%/cover no-repeat;animation:kenburns 22s ease-in-out infinite alternate;filter:sepia(.15) contrast(1.05)}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.12) translate(-1.5%,1%)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, var(--black) 0%, transparent 16%, transparent 45%, rgba(10,8,6,.8) 72%, var(--black) 100%)}
+.letterbox{position:absolute;left:0;right:0;height:7%;background:#000;z-index:2}
+.letterbox.t{top:0}.letterbox.b{bottom:0}
+.hero-txt{position:relative;z-index:3;text-align:center;padding:0 16px 13%}
+.hero-txt .p-meta{margin-top:10px}
+
+/* billing / credits block */
+.credits{text-align:center}
+.presents{font-family:"El Messiri",sans-serif;color:var(--cream-dim);font-size:15px;letter-spacing:1px}
+.verse{font-family:"Amiri",serif;font-size:20px;line-height:2.05;color:var(--amber-soft);margin:6px auto 0;max-width:470px}
+.verse small{display:block;font-size:13px;color:var(--muted)}
+.rule{width:120px;height:1px;margin:24px auto;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.starring{font-family:"Playfair Display",serif;font-style:italic;color:var(--amber);font-size:14px;letter-spacing:4px}
+.billing{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:10px;margin-top:14px}
+.billing .amp{font-family:"Playfair Display",serif;font-style:italic;font-size:38px;color:var(--amber);line-height:1;padding-top:14px}
+.bill .role{font-family:"El Messiri",sans-serif;font-size:13px;color:var(--muted);letter-spacing:2px}
+.bill .name{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:clamp(28px,8vw,36px);line-height:1.35;color:var(--cream)}
+.bill .alias{font-size:13px;color:var(--cream-dim)}
+.bill .of{margin-top:8px;font-size:14px;color:var(--cream-dim);line-height:1.6}
+.bill .of b{display:block;font-family:"El Messiri",sans-serif;font-weight:700;color:var(--cream);font-size:16px}
+.invite-line{margin-top:28px;font-family:"Amiri",serif;font-size:19px;color:var(--cream);line-height:2}
+
+/* film strip frame */
+.strip{
+  position:relative;margin:0 auto;width:min(100%,420px);
+  padding:14px 30px;background:var(--film);
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+}
+.strip::before,.strip::after{
+  content:"";position:absolute;top:0;bottom:0;width:30px;
+  background:radial-gradient(ellipse 6px 8px at center, #2b241c 0 0) ;
+  background:repeating-linear-gradient(180deg, transparent 0 8px, #e9dcc2 8px 20px, transparent 20px 28px);
+  -webkit-mask:linear-gradient(90deg,transparent 9px,#000 9px,#000 21px,transparent 21px);
+  mask:linear-gradient(90deg,transparent 9px,#000 9px,#000 21px,transparent 21px);
+  opacity:.85;
+}
+.strip::before{right:0}.strip::after{left:0}
+.strip img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.strip .edge{position:absolute;top:2px;right:34px;font-family:"Playfair Display",serif;font-size:9px;letter-spacing:2px;color:var(--amber);opacity:.7}
+.caption{text-align:center;margin-top:20px}
+.caption p{font-family:"Amiri",serif;font-size:19px;color:var(--cream);line-height:2}
+.caption .sub{font-family:"El Messiri",sans-serif;font-size:14px;color:var(--muted);margin-top:6px}
+
+/* scene 2: B&W memory, warming in */
+.memory img{filter:grayscale(1) contrast(1.05) brightness(.95);object-position:50% 18%;transition:filter 3s ease .5s}
+.memory.in img{filter:grayscale(.2) sepia(.25)}
+.fatiha{display:inline-block;margin-top:14px;padding-top:8px;border-top:1px solid var(--line);font-family:"El Messiri",sans-serif;color:var(--amber);font-size:15px}
+
+/* scene 3 */
+.hero-shot img{object-position:50% 22%}
+.hero-shot .badge{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  font-family:"Playfair Display",serif;font-style:italic;font-size:12px;letter-spacing:3px;
+  background:var(--red);color:var(--cream);padding:4px 14px;border-radius:2px;white-space:nowrap}
+
+/* clapperboard */
+.clapper{position:relative;width:min(100%,440px);margin:0 auto;padding-top:34px}
+.clap-top{
+  position:absolute;top:0;right:0;left:0;height:40px;border-radius:5px 5px 0 0;
+  background:repeating-linear-gradient(-55deg,#111 0 22px,var(--cream) 22px 44px);
+  transform-origin:96% 100%;transform:rotate(-16deg);
+  box-shadow:0 2px 0 #000;
+}
+.clapper.in .clap-top{animation:clap 1.1s .4s ease forwards}
+@keyframes clap{0%{transform:rotate(-16deg)}55%{transform:rotate(0)}68%{transform:rotate(-3deg)}80%,100%{transform:rotate(0)}}
+.clap-base-stripe{height:20px;background:repeating-linear-gradient(55deg,#111 0 22px,var(--cream) 22px 44px);position:relative;z-index:1}
+.slate{background:#141210;border:2px solid #2b2620;border-top:none;border-radius:0 0 8px 8px;padding:6px 0 4px;position:relative;z-index:1;
+  box-shadow:0 30px 50px rgba(0,0,0,.6)}
+.slate-row{display:flex;gap:12px;align-items:baseline;padding:14px 18px;border-bottom:1px solid rgba(243,231,208,.2)}
+.slate-row:last-child{border-bottom:none}
+.slate-row .k{flex:none;width:68px;font-family:"Playfair Display",serif;font-size:11px;letter-spacing:2px;color:var(--muted);line-height:1.3}
+.slate-row .k span{display:block;font-family:"El Messiri",sans-serif;font-size:13px;letter-spacing:0;color:var(--cream-dim)}
+.slate-row .v{font-family:"El Messiri",sans-serif;font-weight:700;font-size:18px;color:var(--cream);line-height:1.5}
+.slate-split{display:grid;grid-template-columns:1fr 1fr}
+.slate-split .slate-row:first-child{border-left:1px solid rgba(243,231,208,.2)}
+
+.actions{display:flex;gap:10px;margin:18px auto 0;width:min(100%,440px)}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 10px;border-radius:6px;cursor:pointer;text-decoration:none;
+  font:700 15px "Tajawal",sans-serif;border:1px solid var(--amber);background:var(--amber);color:#1a1209;transition:transform .2s ease, background .2s ease}
+.btn.ghost{background:transparent;color:var(--cream)}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--amber-soft);outline-offset:3px}
+
+/* frame counter countdown */
+.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 auto;width:min(100%,440px)}
+.c-cell{background:var(--film);border:1px solid var(--line);border-radius:4px;padding:14px 4px 8px;text-align:center;position:relative;overflow:hidden}
+.c-cell::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.6)}
+.c-cell b{display:block;font-family:"El Messiri",sans-serif;font-weight:700;font-size:32px;line-height:1.1;color:var(--amber-soft);font-variant-numeric:tabular-nums}
+.c-cell span{font-size:12px;color:var(--muted)}
+.done-msg{font-family:"Aref Ruqaa",serif;font-size:26px;color:var(--amber-soft)}
+
+/* theatre rules */
+.rules{display:grid;gap:10px;width:min(100%,440px);margin:0 auto}
+.r{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:6px;background:rgba(31,25,19,.6)}
+.r .ic{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--amber)}
+.r.warn{border-color:rgba(164,38,44,.7);background:linear-gradient(160deg,rgba(164,38,44,.28),rgba(31,25,19,.6))}
+.r.warn .ic{color:#f0a0a0;border-color:rgba(240,160,160,.5)}
+.r h3{font-family:"El Messiri",sans-serif;font-size:17px;color:var(--cream);line-height:1.5}
+.r p{font-size:14px;color:var(--cream-dim);line-height:1.6}
+
+/* the end */
+.the-end{text-align:center;padding:90px 16px 60px}
+.the-end .en{font-family:"Playfair Display",serif;font-style:italic;font-size:46px;color:var(--cream);letter-spacing:2px}
+.the-end .en s{text-decoration-color:var(--red);text-decoration-thickness:3px}
+.the-end .ar{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:32px;color:var(--amber-soft);margin-top:4px}
+.the-end p{color:var(--cream-dim);margin-top:10px}
+footer{text-align:center;padding:0 16px 40px;color:var(--muted);font-size:13px}
+footer .ltr{color:var(--amber)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .card-txt{opacity:1}
+  .grain,.scratch{display:none}
+}
+</style>
+</head>
+<body class="locked">
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="scratch" aria-hidden="true"></div>
+<div class="scratch b" aria-hidden="true"></div>
+
+<!-- ═════════ OPENING ═════════ -->
+<div id="opening">
+  <div class="op-screen" id="poster">
+    <p class="soon">Coming soon · قريباً</p>
+    <div class="p-names">أوس<span class="amp">&amp;</span>ملك</div>
+    <p class="p-meta">العرض الأول · <span class="ltr">10 . 12 . 2026</span></p>
+    <button class="play" id="playBtn" type="button"><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="#1a1209"><path d="M20 12L6 21V3z" transform="rotate(180 12 12)"/></svg></i>ابدأ العرض</button>
+  </div>
+  <div class="op-screen" id="leader" hidden>
+    <div class="leader-ring"><div class="cross"></div><div class="sweep" id="sweep"></div><div class="lnum" id="lnum">٣</div></div>
+  </div>
+  <div class="op-screen" id="cards" hidden></div>
+  <button class="skip" id="skipBtn" type="button" hidden>تخطّي ›</button>
+</div>
+
+<main>
+  <!-- ═════════ HERO ═════════ -->
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="أوس وملك"></div>
+    <div class="letterbox t"></div><div class="letterbox b"></div>
+    <div class="hero-txt">
+      <p class="soon">A love story</p>
+      <h1 class="p-names">أوس<span class="amp">&amp;</span>ملك</h1>
+      <p class="p-meta">الخميس · <span class="ltr">10 . 12 . 2026</span></p>
+    </div>
+  </section>
+
+  <!-- ═════════ CREDITS ═════════ -->
+  <section class="credits">
+    <div class="scene-head reveal">
+      <span class="scene-no">Scene 01 · المشهد الأول</span>
+      <h2 class="scene-title">البداية</h2>
+    </div>
+    <div class="reveal">
+      <p class="presents">بسم الله الرحمن الرحيم</p>
+      <p class="verse">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾<small>سورة الروم · ٢١</small></p>
+      <div class="rule"></div>
+    </div>
+    <div class="reveal">
+      <p class="starring">STARRING · بطولة</p>
+      <div class="billing">
+        <div class="bill">
+          <div class="role">العريس</div>
+          <div class="name">الفنان أوس البنا</div>
+          <div class="alias">(محمد)</div>
+          <div class="of">نجل المرحوم<b>سامي صالح البنا</b></div>
+        </div>
+        <div class="amp">&amp;</div>
+        <div class="bill">
+          <div class="role">العروس</div>
+          <div class="name">أ. ملك</div>
+          <div class="alias">&nbsp;</div>
+          <div class="of">كريمة السيد<b>علي نايف كالي</b></div>
+        </div>
+      </div>
+      <p class="invite-line">يسعدنا ويشرّفنا حضوركم<br>العرضَ الأول لحكايتنا… حفلَ زفافنا</p>
+    </div>
+  </section>
+
+  <!-- ═════════ SCENE 02 — father ═════════ -->
+  <section>
+    <div class="scene-head reveal">
+      <span class="scene-no">Scene 02 · المشهد الثاني</span>
+      <h2 class="scene-title">إهداء… إلى روح أبي</h2>
+    </div>
+    <figure class="strip memory reveal">
+      <span class="edge ltr">KODAK 5219 · ▸ 02A</span>
+      <img src="assets/father.jpg" alt="العريس مع والده المرحوم سامي صالح البنا" loading="lazy">
+    </figure>
+    <div class="caption reveal">
+      <p>إلى المرحوم <b>سامي صالح البنا</b><br>كنتَ أوّل من صفّق لصوتي…<br>والليلة أنت الغائب الحاضر في كل لحظة.</p>
+      <span class="fatiha">الفاتحة على روحه الطاهرة</span>
+    </div>
+  </section>
+
+  <!-- ═════════ SCENE 03 — groom ═════════ -->
+  <section>
+    <div class="scene-head reveal">
+      <span class="scene-no">Scene 03 · المشهد الثالث</span>
+      <h2 class="scene-title">بطل الحكاية</h2>
+    </div>
+    <figure class="strip hero-shot reveal">
+      <span class="edge ltr">KODAK 5219 · ▸ 03A</span>
+      <img src="assets/groom.jpg" alt="الفنان أوس البنا" loading="lazy">
+      <span class="badge ltr">THE ARTIST · AWS ALBANNA</span>
+    </figure>
+    <div class="caption reveal">
+      <p>الفنان <b>أوس البنا</b></p>
+      <p class="sub">بانتظاركم في أجمل مشاهد العمر</p>
+    </div>
+  </section>
+
+  <!-- ═════════ PREMIERE DETAILS — clapperboard ═════════ -->
+  <section>
+    <div class="scene-head reveal">
+      <span class="scene-no">Premiere · العرض الأول</span>
+      <h2 class="scene-title">موعد العرض</h2>
+    </div>
+    <div class="clapper reveal" id="clapper">
+      <div class="clap-top" aria-hidden="true"></div>
+      <div class="clap-base-stripe" aria-hidden="true"></div>
+      <div class="slate">
+        <div class="slate-row"><div class="k">PROD.<span>الإنتاج</span></div><div class="v">حفل زفاف أوس &amp; ملك</div></div>
+        <div class="slate-split">
+          <div class="slate-row"><div class="k">DATE<span>التاريخ</span></div><div class="v">الخميس<br>١٠ / ١٢ / ٢٠٢٦</div></div>
+          <div class="slate-row"><div class="k">TIME<span>الساعة</span></div><div class="v">٤:٣٠<br>عصراً</div></div>
+        </div>
+        <div class="slate-row"><div class="k">LOCATION<span>المكان</span></div><div class="v">صالة وايت روز<br>دوار أبو مازن</div></div>
+      </div>
+    </div>
+    <div class="actions reveal">
+      <a class="btn" id="mapBtn" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        الموقع
+      </a>
+      <button class="btn ghost" id="calBtn" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M12 13v5M9.5 15.5h5"/></svg>
+        أضف للتقويم
+      </button>
+    </div>
+  </section>
+
+  <!-- ═════════ countdown ═════════ -->
+  <section class="center">
+    <div class="scene-head reveal">
+      <span class="scene-no">Countdown</span>
+      <h2 class="scene-title">باقي على العرض</h2>
+    </div>
+    <div class="counter reveal" id="count">
+      <div class="c-cell"><b id="cd-d">--</b><span>يوم</span></div>
+      <div class="c-cell"><b id="cd-h">--</b><span>ساعة</span></div>
+      <div class="c-cell"><b id="cd-m">--</b><span>دقيقة</span></div>
+      <div class="c-cell"><b id="cd-s">--</b><span>ثانية</span></div>
+    </div>
+    <p class="done-msg" id="doneMsg" hidden>العرض بدأ… أهلاً بكم 🤍</p>
+  </section>
+
+  <!-- ═════════ theatre rules ═════════ -->
+  <section>
+    <div class="scene-head reveal">
+      <span class="scene-no">House rules</span>
+      <h2 class="scene-title">تعليمات قاعة العرض</h2>
+    </div>
+    <div class="rules">
+      <div class="r warn reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2"/><path d="M10.5 18.5h3M3 3l18 18"/></svg></div>
+        <div><h3>ممنوع منعاً باتاً التصوير بالجوال</h3><p>ومن يثبت عليه التصوير سيُصادَر هاتفه.</p></div>
+      </div>
+      <div class="r reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div><h3>التوجّه إلى الصالة مباشرةً</h3><p>صالة وايت روز — دوار أبو مازن.</p></div>
+      </div>
+      <div class="r reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M12 17.5s-3-1.9-3-3.8a1.5 1.5 0 013-.6 1.5 1.5 0 013 .6c0 1.9-3 3.8-3 3.8z"/></svg></div>
+        <div><h3>جنّة الأطفال منازلهم</h3><p>نعتذر عن استقبال الأطفال، مع خالص محبتنا.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ the end ═════════ -->
+  <section class="the-end reveal">
+    <div class="en ltr"><s>The End</s></div>
+    <div class="ar">… بل هي البداية</div>
+    <p>حضوركم يُكمل فرحتنا، ودامت أفراحكم عامرة</p>
+  </section>
+
+  <footer><span class="ltr">@mersal.invites</span> · بواسطة مرسال</footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var EVENT = new Date(2026, 11, 10, 16, 30, 0); // 10 Dec 2026, 4:30 PM (local)
+  var VENUE = "صالة وايت روز، دوار أبو مازن، غزة، فلسطين";
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var AR = "٠١٢٣٤٥٦٧٨٩";
+  function ar(n, pad){ var s = String(n); if (pad) s = s.padStart(2, "0"); return s.replace(/\d/g, function(d){ return AR[d]; }); }
+  function $(id){ return document.getElementById(id); }
+
+  /* ---------- opening sequence ---------- */
+  var opening = $("opening"), timers = [], finished = false;
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+  function finish(){
+    if (finished) return; finished = true;
+    timers.forEach(clearTimeout);
+    opening.classList.add("gone");
+    document.body.classList.remove("locked");
+    window.scrollTo(0, 0);
+  }
+  function show(id){ ["poster","leader","cards"].forEach(function(k){ $(k).hidden = (k !== id); }); }
+
+  function runLeader(){
+    show("leader"); $("skipBtn").hidden = false;
+    var n = 3, start = performance.now(), step = 900;
+    $("lnum").textContent = ar(n);
+    (function frame(t){
+      if (finished || $("leader").hidden) return;
+      var el = t - start, idx = Math.floor(el / step);
+      var cur = 3 - idx;
+      if (cur < 1) { runCards(); return; }
+      if (cur !== n) { n = cur; $("lnum").textContent = ar(n); }
+      $("sweep").style.setProperty("--a", ((el % step) / step * 360) + "deg");
+      requestAnimationFrame(frame);
+    })(start);
+  }
+  function runCards(){
+    show("cards");
+    var lines = [
+      'في ليلةٍ لا تُنسى…<small>One unforgettable night</small>',
+      'حكاية <b>أوس</b> و<b>ملك</b><small>A love story</small>'
+    ];
+    lines.forEach(function(html, i){
+      later(function(){ $("cards").innerHTML = '<p class="card-txt">' + html + '</p>'; }, i * 1800);
+    });
+    later(finish, lines.length * 1800);
+  }
+  $("playBtn").addEventListener("click", function(){ reduce ? finish() : runLeader(); });
+  $("skipBtn").addEventListener("click", finish);
+  if (location.hash === "#open") finish(); // preview shortcut
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: .2 });
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  /* ---------- countdown ---------- */
+  var timer;
+  function update(){
+    var diff = EVENT - new Date();
+    if (diff <= 0) { $("count").hidden = true; $("doneMsg").hidden = false; clearInterval(timer); return; }
+    var s = Math.floor(diff / 1000);
+    $("cd-d").textContent = ar(Math.floor(s / 86400), true);
+    $("cd-h").textContent = ar(Math.floor(s % 86400 / 3600), true);
+    $("cd-m").textContent = ar(Math.floor(s % 3600 / 60), true);
+    $("cd-s").textContent = ar(s % 60, true);
+  }
+  update(); timer = setInterval(update, 1000);
+
+  /* ---------- map + calendar ---------- */
+  $("mapBtn").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(VENUE);
+  $("calBtn").addEventListener("click", function(){
+    function p(n){ return String(n).padStart(2, "0"); }
+    function stamp(d){ return d.getFullYear() + p(d.getMonth()+1) + p(d.getDate()) + "T" + p(d.getHours()) + p(d.getMinutes()) + "00"; }
+    var end = new Date(EVENT.getTime() + 4 * 3600 * 1000);
+    var ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Mersal//Invite//AR","BEGIN:VEVENT",
+      "UID:aws-malak-20261210@mersal","DTSTAMP:" + stamp(new Date()),
+      "DTSTART:" + stamp(EVENT),"DTEND:" + stamp(end),
+      "SUMMARY:حفل زفاف أوس وملك","LOCATION:" + VENUE,
+      "DESCRIPTION:ممنوع التصوير بالجوال — جنة الأطفال منازلهم",
+      "END:VEVENT","END:VCALENDAR"].join("\r\n");
+    var url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+    var a = document.createElement("a"); a.href = url; a.download = "aws-malak-wedding.ics";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+  });
+})();
+</script>
+</body>
+</html>

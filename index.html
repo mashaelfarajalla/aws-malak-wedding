@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أوس وملك — حفل زفاف</title>
+<meta name="description" content="دعوة لحضور حفل زفاف الفنان اوس البنا (محمد) و أ. ملك — الخميس ١٠ كانون الأول ٢٠٢٦">
+<meta name="theme-color" content="#4a5640">
+<link rel="icon" type="image/png" href="mersal-favicon.png">
+<link rel="preload" as="image" href="assets/couple.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap">
+<style>
+:root{
+  --sage-900:#323b2c;
+  --sage-800:#3f4a38;
+  --sage-700:#4e5a45;
+  --sage-500:#76826a;
+  --sage-300:#a7b096;
+  --bead:#3c4a1f;
+  --bead-hi:#6f7f3c;
+  --paper:#f1eee7;
+  --paper-2:#e9e5dc;
+  --ink:#4a4740;
+  --ink-soft:#7a766c;
+  --lace:#f4f1ea;
+  --lace-line:#d9d2c4;
+  --lace-bg:url("assets/lace-bg.jpg") center top/min(100vw,736px) auto repeat #f1efea;
+  --paper-tex:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .42  0 0 0 0 .36  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:"Alexandria",system-ui,sans-serif;font-weight:300;color:var(--ink);
+  background:var(--lace-bg);min-height:100vh;overflow-x:hidden;line-height:1.9;
+}
+body.locked{overflow:hidden;height:100vh}
+img{display:block;max-width:100%}
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+/* beaded calligraphy (pearl-dot texture clipped to text) */
+.beaded{
+  color:transparent;
+  background:
+    radial-gradient(circle at 38% 32%, #9aab5c 0 14%, var(--bead-hi) 26%, var(--bead) 44%, transparent 50%) 0 0/7px 7px,
+    radial-gradient(circle at 38% 32%, #9aab5c 0 14%, var(--bead-hi) 26%, var(--bead) 44%, transparent 50%) 3.5px 3.5px/7px 7px;
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(2px 3px 0 rgba(118,130,80,.35)) drop-shadow(0 1px 1px rgba(0,0,0,.25));
+}
+
+/* ═════════ INTRO (green, lace frame) ═════════ */
+#intro{
+  position:fixed;inset:0;z-index:50;overflow:hidden;
+  background:var(--sage-800);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px 16px max(28px, env(safe-area-inset-bottom));
+  transition:transform 1.3s cubic-bezier(.7,0,.25,1), visibility 0s linear 1.3s;
+}
+#intro.gone{transform:translateY(-100%);visibility:hidden}
+#tulipBg{position:absolute;inset:-6%;width:112%;height:112%;max-width:none;object-fit:cover;object-position:50% 40%;
+  filter:blur(3px) saturate(.85);animation:drift 24s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1) translateY(0)}to{transform:scale(1.07) translateY(-2%)}}
+#intro::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(50,59,44,.55) 0%, rgba(50,59,44,.5) 55%, rgba(50,59,44,.85) 100%);pointer-events:none}
+
+.frame-wrap{position:relative;z-index:2;width:min(74vw,320px);aspect-ratio:1034/1367;
+  clip-path:inset(-10% -10% 110% -10%);animation:wipe 2.6s .5s cubic-bezier(.45,.05,.3,1) forwards}
+@keyframes wipe{to{clip-path:inset(-10% -10% -10% -10%)}}
+.frame-wrap img{width:100%;height:100%;display:block;filter:drop-shadow(0 14px 22px rgba(0,0,0,.35))}
+.mono{position:absolute;inset:0;display:grid;place-items:center}
+.mono span{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:min(30vw,128px);line-height:1;transform:translateY(-4%)}
+
+.std{position:relative;z-index:2;text-align:center;margin-top:26px;color:#efeadf;opacity:0;animation:fadeUp 1.4s 2.6s ease forwards}
+.std .d{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:18px;letter-spacing:5px}
+.std .s{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:21px;letter-spacing:5px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.play{
+  position:relative;z-index:2;margin-top:22px;width:52px;height:52px;border-radius:50%;
+  border:none;cursor:pointer;background:#f3efe6;display:grid;place-items:center;
+  opacity:0;animation:fadeUp 1s 3.4s ease forwards, ring 2.4s 4.4s infinite;
+  box-shadow:0 0 0 0 rgba(243,239,230,.5);
+}
+.play:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(243,239,230,.55)}70%,100%{box-shadow:0 0 0 18px rgba(243,239,230,0)}}
+.play-lbl{position:relative;z-index:2;margin-top:10px;font-size:13px;color:#dcd6c8;opacity:0;animation:fadeUp 1s 3.6s ease forwards}
+
+/* ═════════ PAGE (paper) ═════════ */
+.paper{position:relative;background:var(--lace-bg);min-height:100vh;overflow-x:hidden;overflow-x:clip}
+main{max-width:520px;margin:0 auto;padding:0 20px 0;text-align:center}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s ease, transform 1.2s ease}
+.reveal.in{opacity:1;transform:none}
+
+.chandelier{width:min(66vw,250px);margin:0 auto;display:block;transform-origin:50% 0}
+.chandelier.in{animation:sway 6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+
+/* justified Arabic paragraphs with kashida feel */
+.just{text-align:justify;text-align-last:justify;-moz-text-align-last:justify;font-size:15px;line-height:2.2;color:var(--ink);max-width:380px;margin:0 auto}
+.just span{display:block}
+.just .fit-line{white-space:nowrap}
+.just .kul{font-style:normal}
+.intro-txt{margin-top:26px}
+
+.families{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px auto 0;max-width:400px}
+.fam small{display:block;font-size:11.5px;color:var(--ink-soft);line-height:1.6}
+.fam b{font-weight:400;font-size:14.5px;color:var(--ink)}
+.invite{margin-top:26px;font-size:14px;color:var(--ink);letter-spacing:.5px}
+
+.names{margin:22px auto 0;max-width:380px;padding:0 6px}
+.names img{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(40,50,30,.18))}
+
+/* couple photo in the same lace oval frame used for the groom + father, tulips on both sides */
+.photo{position:relative;margin:34px auto 0;width:min(80vw,320px);padding-bottom:58px;isolation:isolate}
+.photo .pic{position:relative;z-index:1;aspect-ratio:565/696;filter:drop-shadow(0 10px 18px rgba(60,55,35,.2))}
+.photo .pic img{position:absolute;left:19%;top:13.5%;width:62%;height:74.5%;object-fit:cover;object-position:50% 20%;border-radius:50%}
+.photo .pic img.lace{inset:0;left:0;top:0;width:100%;height:100%;border-radius:0;object-fit:fill}
+.photo .tulips{position:absolute;z-index:0;left:50%;bottom:0;width:min(100vw,460px);max-width:none;
+  transform:translateX(-50%);height:auto;
+  /* full row of tulips: on both sides and peeking out under the frame */
+  -webkit-mask:linear-gradient(180deg,transparent 0,#000 35%,#000 90%,transparent 100%);
+  mask:linear-gradient(180deg,transparent 0,#000 35%,#000 90%,transparent 100%)}
+
+/* real flower photos, faded into the paper */
+.bloom{display:block;margin:30px -20px 0;overflow:hidden}
+.bloom img{width:100%;aspect-ratio:4/3.2;object-fit:cover;
+  -webkit-mask:linear-gradient(180deg,transparent 0,#000 18%,#000 80%,transparent 100%);
+  mask:linear-gradient(180deg,transparent 0,#000 18%,#000 80%,transparent 100%)}
+.bloom.bed img{object-position:30% 45%}
+.bloom.side img{aspect-ratio:4/2.6;object-position:0 55%;transform:scaleX(-1)}
+/* embroidered tulips row under the countdown */
+.bloom.row img{aspect-ratio:343/180;object-fit:cover;
+  -webkit-mask:linear-gradient(180deg,transparent 0,#000 22%,#000 88%,transparent 100%);
+  mask:linear-gradient(180deg,transparent 0,#000 22%,#000 88%,transparent 100%)}
+
+.badge{width:105px;margin:34px auto 0;position:relative;filter:drop-shadow(0 6px 10px rgba(0,0,0,.12))}
+.badge img{width:100%;height:auto;display:block}
+.will{margin-top:22px;font-size:14.5px}
+
+.when{display:grid;grid-template-columns:1fr auto 1.3fr auto 1fr;align-items:center;margin:22px auto 0;max-width:400px}
+.when .sep{width:1px;height:62px;background:var(--ink)}
+.when div{font-size:14px;line-height:1.7}
+.addr{margin-top:20px}
+
+.count{display:flex;justify-content:center;gap:6px;margin-top:26px;direction:ltr}
+.count .u{min-width:54px}
+.count b{display:block;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:40px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.count i{font-style:normal;font-size:10px;color:var(--ink-soft)}
+.count .c{font-family:"Cormorant Garamond",serif;font-size:32px;line-height:1.1}
+.done{font-family:"Aref Ruqaa",serif;font-size:26px;margin-top:22px}
+
+
+.msg{margin-top:26px}
+.link{display:inline-block;margin-top:22px;font-weight:500;font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:6px;background:none;border:none;cursor:pointer;font-family:inherit}
+.link:focus-visible,.map:focus-visible{outline:2px solid var(--sage-500);outline-offset:4px}
+.map{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 22px;border:1px solid var(--sage-500);border-radius:30px;color:var(--sage-800);text-decoration:none;font-size:13.5px;font-weight:400}
+.notes{margin:34px auto 0;max-width:380px;font-size:15px;line-height:2;color:var(--ink)}
+.notes .h{font-weight:500;text-align:center;margin:0 0 10px}
+.notes ul{list-style:none;margin:0;padding:0;text-align:right}
+.notes li{position:relative;padding-right:20px;margin-bottom:8px}
+.notes li::before{content:"";position:absolute;right:4px;top:.85em;width:6px;height:6px;border-radius:50%;background:var(--sage-500)}
+
+.credit{margin-top:18px;line-height:1.7;font-family:"Cormorant Garamond",serif;font-size:16px;color:var(--ink-soft)}
+/* table: wider than the text column, top white space cropped off */
+.table{display:block;width:min(106vw,640px);max-width:none;margin:0 calc(50% - min(53vw,320px));
+  aspect-ratio:735/430;height:auto;object-fit:cover;object-position:50% 100%;mix-blend-mode:multiply;
+  -webkit-mask:linear-gradient(180deg,transparent 0,#000 6%,#000 94%,transparent 100%);
+  mask:linear-gradient(180deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+
+/* groom + late father photos */
+.pic-section{margin:40px auto 0;max-width:400px}
+.pic-title{font-family:"Aref Ruqaa",serif;font-size:26px;line-height:1.5;color:var(--sage-800);margin-bottom:14px}
+.arch{margin:0 auto;width:min(84vw,340px)}
+.arch .pic{position:relative;aspect-ratio:565/696;filter:drop-shadow(0 10px 18px rgba(60,55,35,.2))}
+.arch .pic img{position:absolute;left:19%;top:13.5%;width:62%;height:74.5%;object-fit:cover;border-radius:50%}
+.arch.groom .pic img{object-position:50% 15%}
+.arch.father .pic img{object-position:50% 0;filter:sepia(.2) saturate(.9)}
+.arch .pic img.lace{position:absolute;inset:0;width:100%;height:100%;border-radius:0;filter:none;object-fit:fill}
+.arch figcaption{margin-top:12px;font-size:14.5px;line-height:1.7;color:var(--ink)}
+.arch figcaption small{display:block;font-size:12px;color:var(--ink-soft)}
+.tribute{margin:22px auto 0;max-width:360px;font-family:"Aref Ruqaa",serif;font-size:19px;line-height:1.9;color:var(--sage-800)}
+.tribute small{display:block;margin-top:6px;font-family:"Alexandria",sans-serif;font-size:12.5px;color:var(--ink-soft)}
+
+/* message form (inline) */
+.wish-sec{position:relative;isolation:isolate;overflow:hidden;margin:34px -20px 0;padding:30px 20px 34px;background:var(--sage-800)}
+.wish-sec::before{content:"";position:absolute;inset:-8px;z-index:-2;background:url("assets/tulips-pearls.jpg") 50% 40%/cover no-repeat;filter:blur(3px) saturate(.85)}
+.wish-sec::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg, rgba(50,59,44,.45) 0%, rgba(50,59,44,.5) 55%, rgba(50,59,44,.85) 100%)}
+.wish-sec .msg{color:#f3efe6;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.wish{width:min(100%,460px);margin:22px auto 0;background:rgba(243,239,230,.08);border:1px solid rgba(243,239,230,.35);border-radius:16px;padding:20px 16px 16px;text-align:center;box-sizing:border-box;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.wish-title{display:block;font-family:"Aref Ruqaa",serif;font-size:26px;color:#f3efe6;line-height:1.4;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.wish input{width:100%;box-sizing:border-box;margin-top:12px;padding:12px;border:1px solid rgba(243,239,230,.45);border-radius:10px;background:transparent;font:300 15px "Alexandria",sans-serif;color:#f3efe6}
+.wish input:focus{outline:none;border-color:#f3efe6;background:rgba(243,239,230,.06)}
+.wish input::placeholder,.wish textarea::placeholder{color:rgba(243,239,230,.65)}
+.wish .send:disabled{opacity:.6;cursor:default}
+.wish-status{margin-top:10px;font-size:14px;color:#f3efe6;min-height:1.4em}
+.wish textarea{width:100%;box-sizing:border-box;min-height:120px;margin-top:10px;padding:12px;border:1px solid rgba(243,239,230,.45);border-radius:10px;background:transparent;font:300 15px "Alexandria",sans-serif;color:#f3efe6;resize:vertical}
+.wish textarea:focus{outline:none;border-color:#f3efe6;background:rgba(243,239,230,.06)}
+.wish .send{width:100%;margin-top:12px;padding:12px;border-radius:10px;border:1px solid var(--sage-700);background:var(--sage-700);color:#f3efe6;font:400 14px "Alexandria",sans-serif;cursor:pointer}
+.wish .send:focus-visible{outline:2px solid var(--sage-500);outline-offset:3px}
+.wall{width:min(100%,460px);margin:26px auto 0;text-align:center}
+.wall-title{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:24px;color:#f3efe6;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.wall-list{list-style:none;margin:12px -20px 0;padding:2px 20px 12px;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.wall-list::-webkit-scrollbar{display:none}
+.wall-list li{flex:0 0 78%;max-width:320px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;background:rgba(243,239,230,.1);border:1px solid rgba(243,239,230,.28);border-radius:14px;padding:14px 16px;text-align:right;color:#f3efe6;animation:fadeUp .5s ease}
+.wall-list .m{max-height:12.6em;overflow-y:auto}
+.wall-hint{margin-top:2px;font:300 12px "Alexandria",sans-serif;color:rgba(243,239,230,.7)}
+.wall-list .m{font:300 15px/1.8 "Alexandria",sans-serif;white-space:pre-line;overflow-wrap:anywhere}
+.wall-list .n{margin-top:6px;font:400 13px "Alexandria",sans-serif;color:rgba(243,239,230,.75)}
+
+/* ═════════ BOTTOM NAV ═════════ */
+main{padding-bottom:110px}
+.dock{position:fixed;z-index:40;left:50%;bottom:max(14px, env(safe-area-inset-bottom));
+  width:min(calc(100% - 32px),440px);transform:translate(-50%,140%);opacity:0;
+  transition:transform .9s cubic-bezier(.2,.8,.2,1) .6s, opacity .6s ease .6s}
+body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
+.dock ul{list-style:none;margin:0;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr 84px 1fr 1fr;align-items:center;
+  background:rgba(250,248,243,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(118,130,106,.18);border-radius:40px;box-shadow:0 8px 24px rgba(50,59,44,.16)}
+.dock a,.dock button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;width:100%;
+  background:none;border:none;cursor:pointer;color:var(--sage-900);text-decoration:none;font:400 12px "Alexandria",sans-serif;line-height:1.3}
+.dock svg{width:22px;height:22px}
+.dock a:focus-visible,.dock button:focus-visible{outline:2px solid var(--sage-500);outline-offset:2px;border-radius:12px}
+.dock .hub{position:relative;height:56px}
+.dock .hub button{position:absolute;left:50%;top:50%;transform:translate(-50%,-62%);width:76px;height:76px;padding:0;border-radius:50%;
+  justify-content:center;color:#f3efe6;background:radial-gradient(circle at 35% 30%, #9aa58a 0%, var(--sage-500) 45%, var(--sage-700) 100%);
+  border:5px solid #faf8f3;box-shadow:0 6px 16px rgba(50,59,44,.28)}
+.dock .hub svg{width:34px;height:34px}
+.dock .music.on svg{animation:beat 1.2s ease-in-out infinite}
+.dock .music .ico-off{display:none}
+.dock .music.on .ico-on{display:none}
+.dock .music.on .ico-off{display:block}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ═════════ INTRO ═════════ -->
+<section id="intro" aria-label="حفظ الموعد">
+  <img id="tulipBg" src="assets/tulips-pearls.jpg" alt="" aria-hidden="true">
+  <div class="frame-wrap">
+    <img src="assets/monogram.png" alt="أ م" width="1034" height="1367">
+  </div>
+  <div class="std">
+    <div class="d ltr">10-12-2026</div>
+    <div class="s">SAVE THE DATE</div>
+  </div>
+  <button class="play" id="playBtn" type="button" aria-label="افتح الدعوة">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#3f4a38"/></svg>
+  </button>
+  <div class="play-lbl">اضغط لفتح الدعوة</div>
+</section>
+
+<!-- ═════════ PAPER PAGE ═════════ -->
+<div class="paper">
+<main>
+  <svg class="chandelier reveal" viewBox="0 46 240 226" aria-hidden="true"></svg>
+
+  <p class="just intro-txt reveal">
+    <span>في ليلةٍ استثنائيّـــة تتلألأ في سمــاء الفـــــرح</span>
+    <span>وتُزهر تفاصيلها بأجمل البدايــات، وبقلوبٍ امتلأت</span>
+    <span>بالســــرور واجتمعت على المحبّة لتشاركنا فرحة العمر</span>
+    <span class="fit-line">يتشــــرّف <i class="kul">كـــــــــــلٌّ</i> مــــن</span>
+  </p>
+
+  <div class="families reveal">
+    <div class="fam"><small>نجل المرحوم/</small><b>سامي صالح البنـــا</b></div>
+    <div class="fam"><small>كريمة السيد/</small><b>علي نايف كـــالي</b></div>
+  </div>
+
+  <p class="invite reveal">بدعـــوة سيادتكم لـ حضــــور حفل زفــاف</p>
+
+  <div class="names reveal">
+    <img src="assets/names.png" alt="أوس و ملك" width="1458" height="521">
+  </div>
+
+  <figure class="photo reveal">
+    <img class="tulips" src="assets/tulips-embroidered-cut.webp" alt="" aria-hidden="true" width="343" height="180">
+    <div class="pic"><img src="assets/couple.jpg" alt="الفنان اوس البنا (محمد) و أ. ملك" width="720" height="962"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696"></div>
+  </figure>
+
+  <div class="badge reveal" aria-hidden="true">
+    <img src="assets/monogram.png" alt="" width="1034" height="1367" loading="lazy">
+  </div>
+
+  <p class="will reveal">وذلك بمشيئـــــــــة الله تعـــــــالى</p>
+
+  <div class="when reveal">
+    <div>يـــــوم<br>الخميــــس</div>
+    <span class="sep"></span>
+    <div>10 ديسمبر 2026<br>4:30 عصـــراً</div>
+    <span class="sep"></span>
+    <div>صالـــــة<br>وايت روز</div>
+  </div>
+
+  <p class="addr reveal" id="venue">صالة وايت روز - دوّار أبو مـــــــازن</p>
+  <a class="map reveal" id="mapBtn" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+    الموقع على الخريطة
+  </a>
+
+  <div class="count reveal" id="count" aria-live="off">
+    <div class="u"><b id="cd-d">--</b><i>أيام</i></div><span class="c">:</span>
+    <div class="u"><b id="cd-h">--</b><i>ساعات</i></div><span class="c">:</span>
+    <div class="u"><b id="cd-m">--</b><i>دقائق</i></div><span class="c">:</span>
+    <div class="u"><b id="cd-s">--</b><i>ثواني</i></div>
+  </div>
+  <p class="done" id="doneMsg" hidden>الليلة ليلتنا… أهلاً بكم</p>
+
+  <figure class="bloom row reveal" aria-hidden="true">
+    <img src="assets/tulips-embroidered.jpg" alt="" width="343" height="180" loading="lazy">
+  </figure>
+
+  <section class="pic-section reveal" aria-label="في ذكرى المرحوم سامي صالح البنا">
+    <svg class="chandelier reveal" viewBox="0 46 240 226" aria-hidden="true"></svg>
+    <h2 class="pic-title">في ذكرى الغالي</h2>
+    <figure class="arch father">
+      <div class="pic"><img src="assets/father.jpg" alt="أوس مع والده المرحوم سامي صالح البنا" width="621" height="960" loading="lazy"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
+      <figcaption><small>مع والده المرحوم</small>سامي صالح البنـــا</figcaption>
+    </figure>
+  </section>
+  <p class="tribute reveal">
+    إلى روحِ أبي الطاهرة… كنتَ أوّلَ من تمنّى هذه الليلة، وستبقى أوّلَ الحاضرين في القلب
+    <small>رحمه الله وأسكنه فسيح جنّاته</small>
+  </p>
+
+  <section class="pic-section reveal" aria-label="العريس">
+    <h2 class="pic-title">العريس</h2>
+    <figure class="arch groom">
+      <div class="pic"><img src="assets/groom.jpg" alt="العريس الفنان اوس البنا (محمد)" width="720" height="945" loading="lazy"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
+      <figcaption>الفنان اوس البنا (محمد)</figcaption>
+    </figure>
+  </section>
+
+  <section class="wish-sec" id="wish" aria-label="رسالة للعرسان">
+  <p class="just msg reveal">
+    <span>اتركوا للعرسان كلمةً من قلبكم ليقرآها يومًا، فتعود بهما</span>
+    <span>الذاكرة إلى هذه الليلـــة بكلّ حبّها وفرحـــــــها</span>
+  </p>
+  <form class="wish reveal" id="wishForm">
+    <label class="wish-title" for="msgTxt">رسالة لـ أوس وملك</label>
+    <input id="msgName" type="text" placeholder="الاسم" autocomplete="name" maxlength="80">
+    <textarea id="msgTxt" placeholder="اكتبوا كلمتكم هنا…" required maxlength="2000"></textarea>
+    <button class="send" id="sendBtn" type="submit">إرسال</button>
+    <p class="wish-status" id="wishStatus" role="status" aria-live="polite"></p>
+  </form>
+  <div class="wall" id="wall" hidden>
+    <h3 class="wall-title">رسائل الأحبّة</h3>
+    <ul class="wall-list" id="wallList"></ul>
+    <p class="wall-hint" id="wallHint" hidden>اسحبوا لرؤية المزيد ←</p>
+  </div>
+  </section>
+
+  <div class="notes reveal">
+    <p class="h">ملاحظات تُهمّنا منعاً للإحراج</p>
+    <ul>
+      <li>ممنوع منعاً باتّاً التصوير بالجوال، ومن يثبت عليه التصوير سيُصادَر هاتفه.</li>
+      <li>التوجّه إلى الصالة مباشرةً.</li>
+      <li>نرجو منكم عدم اصطحاب الأطفال؛ جنّة الأطفال منازلهم، ولهم ليلةٌ هادئة ومريحة.</li>
+    </ul>
+  </div>
+
+  <img class="table reveal" src="assets/table.jpg" alt="" aria-hidden="true" width="735" height="551" loading="lazy">
+  <p class="credit reveal">لكل مناسبة، رسالة تستحق أن تصل<br>بواسطة مرسال<br><span class="ltr">Insta: @mersal.invites</span></p>
+</main>
+</div>
+
+<!-- ═════════ BOTTOM NAV ═════════ -->
+<nav class="dock" aria-label="قائمة الدعوة">
+  <ul>
+    <li><a id="callBtn" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>
+      اتصل</a></li>
+    <li><button class="music" id="musicBtn" type="button" aria-pressed="false">
+      <svg class="ico-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2.5V16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.8" fill="currentColor"/><circle cx="16.5" cy="16" r="2.8" fill="currentColor"/></svg>
+      <svg class="ico-off" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      موسيقى</button></li>
+    <li class="hub"><button id="topBtn" type="button" aria-label="العودة للأعلى">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="15" cy="24" r="8.5"/><circle cx="25" cy="24" r="8.5"/><path d="M17.5 11.5 20 15l2.5-3.5L20 9z" fill="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+    </button></li>
+    <li><a href="#venue">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      الموقع</a></li>
+    <li><a href="#wish">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-8-4.9-8-11a4.5 4.5 0 018-2.8 4.5 4.5 0 018 2.8c0 6.1-8 11-8 11z"/></svg>
+      التهاني</a></li>
+  </ul>
+</nav>
+<audio id="bgMusic" src="assets/music.mp4" loop preload="none"></audio>
+
+<script>
+(function(){
+  "use strict";
+  var EVENT = new Date(2026, 11, 10, 16, 30, 0); // الخميس 10 ديسمبر 2026 — 4:30 عصراً
+  var VENUE = "صالة وايت روز، دوار أبو مازن، غزة، فلسطين";
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbyq6wmDDZD-5X3vLlGu7LyUtMkYxpgzDP1poDYZ6ifo-oXD6z6V1qGmKp-o_c03eysmbA/exec"; // رابط Google Apps Script (ينتهي بـ /exec) — الرسائل تُحفظ في جدول Google Sheets
+  var PHONE = ""; // رقم زر «اتصل» بالقائمة السفلية مثل "+970599000000" — إذا تُرك فارغاً يختفي الزر
+  var WHATSAPP = ""; // رقم واتساب العرسان بصيغة دولية بدون + أو أصفار (مثال: 9627XXXXXXXX) — كل رسالة تنفتح بواتساب لهذا الرقم
+  var NS = "http://www.w3.org/2000/svg";
+  function $(id){ return document.getElementById(id); }
+
+  /* تمديد كلمة «كلّ» لتملأ السطر بالضبط بدون فراغات زائدة حولها */
+  (function(){
+    var line = document.querySelector(".fit-line"), kul = line && line.querySelector(".kul");
+    if (!line) return;
+    function set(n){ kul.textContent = "ك" + new Array(n + 1).join("ـ") + "لٌّ"; }
+    function fit(){
+      if (!line.clientWidth) return;
+      var lo = 0, hi = 300;
+      while (lo < hi){
+        var mid = (lo + hi + 1) >> 1;
+        set(mid);
+        if (line.scrollWidth <= line.clientWidth) lo = mid; else hi = mid - 1;
+      }
+      set(lo);
+    }
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(line);
+    window.addEventListener("resize", fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    fit();
+  })();
+  function el(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  // deterministic random so art looks the same every load
+  var seed = 7; function rnd(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+  /* ---------- scalloped lace frame ---------- */
+  function lace(svg, cx, cy, rx, ry, scallops, band, idp){
+    var defs = el("defs", {}, svg);
+    var pat = el("pattern", { id: idp + "p", width: 14, height: 14, patternUnits: "userSpaceOnUse" }, defs);
+    el("rect", { width: 14, height: 14, fill: "#f6f3ec" }, pat);
+    el("circle", { cx: 7, cy: 7, r: 3.2, fill: "none", stroke: "#d6cfbf", "stroke-width": .8 }, pat);
+    el("circle", { cx: 0, cy: 0, r: 1.3, fill: "#e3ddd0" }, pat);
+    el("circle", { cx: 14, cy: 14, r: 1.3, fill: "#e3ddd0" }, pat);
+    // outer scalloped edge
+    var d = "", n = scallops * 8;
+    for (var i = 0; i <= n; i++){
+      var t = i / n * Math.PI * 2;
+      var bump = Math.abs(Math.sin(t * scallops / 2 * 2)) ;
+      var k = 1 + .045 * Math.pow(bump, .6);
+      var x = cx + Math.cos(t) * rx * k, y = cy + Math.sin(t) * ry * k;
+      d += (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+    }
+    el("path", { d: d + "Z", fill: "url(#" + idp + "p)", stroke: "#d2cab9", "stroke-width": 1.2 }, svg);
+    // flowers along band
+    var fr = 1 - band / 2 / Math.min(rx, ry);
+    for (var j = 0; j < scallops; j++){
+      var a = (j + .5) / scallops * Math.PI * 2;
+      var fx = cx + Math.cos(a) * rx * (fr + .02), fy = cy + Math.sin(a) * ry * (fr + .02);
+      for (var p = 0; p < 5; p++){
+        var pa = p / 5 * Math.PI * 2;
+        el("circle", { cx: (fx + Math.cos(pa) * 2.6).toFixed(1), cy: (fy + Math.sin(pa) * 2.6).toFixed(1), r: 1.8, fill: "#fffdf8", stroke: "#cfc6b4", "stroke-width": .5 }, svg);
+      }
+      el("circle", { cx: fx.toFixed(1), cy: fy.toFixed(1), r: 1.1, fill: "#d8cfbd" }, svg);
+    }
+    // inner scallop line + inner paper
+    var irx = rx - band, iry = ry - band;
+    el("ellipse", { cx: cx, cy: cy, rx: irx + 3, ry: iry + 3, fill: "none", stroke: "#cfc6b4", "stroke-width": 1, "stroke-dasharray": "1.5 3" }, svg);
+    el("ellipse", { cx: cx, cy: cy, rx: irx, ry: iry, fill: "#f2f0ea", stroke: "#e0d9cb", "stroke-width": 1 }, svg);
+  }
+
+  /* ---------- chandelier (oak-leaf tole, two tiers) ---------- */
+  function chandelier(svg){
+    var cx = 120, R = Math.PI / 180;
+    var leafC = ["#a3ad8c", "#bcc3a6", "#d3d6c1", "#8c9878", "#b7ab8b", "#e2e0cf", "#97a281", "#c9bf9f"];
+    function pick(){ return leafC[Math.floor(rnd() * leafC.length)]; }
+    // lobed oak leaf pointing along +x, then placed
+    function oak(x, y, len, ang, parent){
+      var n = 16, top = "", bot = [];
+      for (var i = 0; i <= n; i++){
+        var t = i / n;
+        var w = len * .27 * Math.pow(Math.sin(Math.PI * Math.min(t * 1.06, 1)), .7) * (.58 + .42 * Math.abs(Math.cos(t * Math.PI * 3.5)));
+        var px = (t * len).toFixed(1);
+        top += (i ? "L" : "M") + px + " " + (-w).toFixed(1);
+        bot.unshift(px + " " + w.toFixed(1));
+      }
+      var tr = "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") rotate(" + ang.toFixed(0) + ")";
+      var g = el("g", { transform: tr }, parent);
+      el("path", { d: top + "L" + bot.join("L") + "Z", fill: pick(), stroke: "#7d876a", "stroke-width": .35, "stroke-linejoin": "round" }, g);
+      el("path", { d: "M0 0 L" + (len * .85).toFixed(1) + " 0", stroke: "#8a8d70", "stroke-width": .3, opacity: .7 }, g);
+    }
+    var metal = "#6f6a55";
+
+    // chain + climbing vine
+    for (var y = 50, k = 0; y < 80; y += 6.5, k++){
+      el("ellipse", { cx: cx, cy: y, rx: k % 2 ? .9 : 2.3, ry: 3.8, fill: "none", stroke: metal, "stroke-width": 1.1 }, svg);
+    }
+    for (var v = 54; v < 78; v += 8){
+      var side = (Math.floor(v / 8) % 2) ? 1 : -1;
+      oak(cx + side * 2, v, 6 + rnd() * 3, side > 0 ? 20 + rnd() * 40 : 120 + rnd() * 40, svg);
+    }
+
+    // twisted stem
+    var s1 = "", s2 = "";
+    for (var sy = 78; sy <= 228; sy += 2){
+      var o = 2.4 * Math.sin(sy / 8);
+      s1 += (sy === 78 ? "M" : "L") + (cx + o).toFixed(1) + " " + sy;
+      s2 += (sy === 78 ? "M" : "L") + (cx - o).toFixed(1) + " " + sy;
+    }
+    el("path", { d: s1, stroke: metal, "stroke-width": 2.4, fill: "none" }, svg);
+    el("path", { d: s2, stroke: "#857f67", "stroke-width": 2.2, fill: "none" }, svg);
+
+    // upper crown: branches + leaves (narrow top, wide lower middle)
+    var br = el("g", { stroke: "#7a7560", "stroke-width": .9, fill: "none", "stroke-linecap": "round", opacity: .55 }, svg);
+    for (var b = 0; b < 12; b++){
+      var by = 92 + b * 6.5, dir = b % 2 ? 1 : -1;
+      var reach = 8 + 30 * Math.sin(Math.PI * Math.min((by - 84) / 92, 1));
+      el("path", { d: "M" + cx + " " + by + " Q" + (cx + dir * reach * .5) + " " + (by - 4) + " " + (cx + dir * reach) + " " + (by - 16 + rnd() * 6) }, br);
+    }
+    function hw(y){ var t = (y - 82) / 94; return 5 + 46 * Math.pow(Math.sin(Math.PI * Math.min(Math.max(t, 0), 1) * .92), .9); }
+    for (var c = 0; c < 230; c++){
+      var ly = 82 + rnd() * 94, lx = cx + (rnd() * 2 - 1) * hw(ly);
+      var a = Math.atan2(ly - 128, lx - cx) / R + (rnd() - .5) * 70;
+      oak(lx, ly, 6.5 + rnd() * 4.5, a, svg);
+    }
+
+    // lower tier
+    var ry0 = 234, RX = 88, RY = 15;
+    function ringLeaves(n, front){
+      for (var i = 0; i < n; i++){
+        var th = (front ? 0 : Math.PI) + rnd() * Math.PI;
+        var rr = .72 + rnd() * .34;
+        var lx = cx + Math.cos(th) * RX * rr, ly = ry0 + Math.sin(th) * RY * rr + (rnd() - .3) * 14;
+        var a = Math.atan2(Math.sin(th) * 0.5, Math.cos(th)) / R + (rnd() - .5) * 90 + 15;
+        oak(lx, ly, 7 + rnd() * 5, a, svg);
+      }
+    }
+    ringLeaves(110, false);                       // back half
+    var cups = [[-86, 230], [-55, 237], [-22, 225], [22, 225], [55, 237], [86, 230]];
+    var arms = el("g", { fill: "none", stroke: metal, "stroke-width": 1.8, "stroke-linecap": "round" }, svg);
+    cups.forEach(function(p){
+      el("path", { d: "M" + cx + " 226 Q" + (cx + p[0] * .45) + " " + (p[1] + 12) + " " + (cx + p[0]) + " " + p[1] }, arms);
+    });
+    cups.forEach(function(p){
+      var x = cx + p[0], y = p[1], h = Math.abs(p[0]) < 30 ? 21 : 25;
+      el("path", { d: "M" + (x - 5) + " " + (y - 1) + " Q" + x + " " + (y + 4) + " " + (x + 5) + " " + (y - 1) + "Z", fill: "#8a876d" }, svg);
+      el("rect", { x: x - 2.6, y: y - 1 - h, width: 5.2, height: h, rx: 1.4, fill: "#f7f1e5", stroke: "#d9cdb8", "stroke-width": .6 }, svg);
+      el("path", { d: "M" + x + " " + (y - 1 - h) + " v-2", stroke: "#5c564a", "stroke-width": .6 }, svg);
+      el("ellipse", { cx: x, cy: y - 6 - h, rx: 1.6, ry: 3.2, fill: "#f2c66d", opacity: .9, class: "flame" }, svg);
+    });
+    ringLeaves(160, true);                       // front half
+  }
+  document.querySelectorAll(".chandelier").forEach(chandelier);
+
+  /* ---------- open invitation ---------- */
+  function openInvite(){
+    $("intro").classList.add("gone");
+    document.body.classList.remove("locked");
+    window.scrollTo(0, 0);
+  }
+  $("playBtn").addEventListener("click", openInvite);
+  if (location.hash === "#open") openInvite();
+
+  /* ---------- reveal on scroll ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll(".reveal").forEach(function(n){ io.observe(n); });
+
+  /* ---------- countdown ---------- */
+  var timer;
+  function pad(n){ return String(n).padStart(2, "0"); }
+  function tick(){
+    var diff = EVENT - new Date();
+    if (diff <= 0){ $("count").hidden = true; $("doneMsg").hidden = false; clearInterval(timer); return; }
+    var s = Math.floor(diff / 1000);
+    $("cd-d").textContent = Math.floor(s / 86400);
+    $("cd-h").textContent = pad(Math.floor(s % 86400 / 3600));
+    $("cd-m").textContent = pad(Math.floor(s % 3600 / 60));
+    $("cd-s").textContent = pad(s % 60);
+  }
+  tick(); timer = setInterval(tick, 1000);
+
+  /* ---------- map ---------- */
+  $("mapBtn").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(VENUE);
+
+  /* ---------- bottom nav ---------- */
+  if (PHONE) $("callBtn").href = "tel:" + PHONE;
+  else $("callBtn").style.visibility = "hidden"; // يبقى مكانه محجوزاً حتى لا تختل القائمة
+  $("topBtn").addEventListener("click", function(){ window.scrollTo({ top: 0, behavior: "smooth" }); });
+  var music = $("bgMusic"), mBtn = $("musicBtn");
+  function setMusic(on){ mBtn.classList.toggle("on", on); mBtn.setAttribute("aria-pressed", on); }
+  mBtn.addEventListener("click", function(){
+    if (music.paused){ music.play().then(function(){ setMusic(true); }).catch(function(){}); }
+    else { music.pause(); setMusic(false); }
+  });
+
+  /* ---------- messages ---------- */
+  /* wall of messages */
+  var wallItems = [];
+  function renderWall(){
+    var list = $("wallList"); list.textContent = "";
+    wallItems.forEach(function(it){
+      var li = document.createElement("li");
+      var m = document.createElement("p"); m.className = "m"; m.textContent = it.message; li.appendChild(m);
+      if (it.name){ var n = document.createElement("p"); n.className = "n"; n.textContent = "— " + it.name; li.appendChild(n); }
+      list.appendChild(li);
+    });
+    $("wall").hidden = wallItems.length === 0;
+    $("wallHint").hidden = wallItems.length < 2;
+    list.scrollLeft = 0;
+  }
+  function loadWall(){
+    if (!SHEET_URL) return;
+    fetch(SHEET_URL).then(function(r){ return r.json(); })
+      .then(function(d){ if (Array.isArray(d)){ wallItems = d; renderWall(); } })
+      .catch(function(){});
+  }
+  loadWall();
+
+  $("wishForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = $("msgName").value.trim();
+    var t = $("msgTxt").value.trim();
+    var status = $("wishStatus"), btn = $("sendBtn");
+    if (!t){ $("msgTxt").focus(); return; }
+    // يفتح واتساب فوراً (داخل الضغطة نفسها حتى لا يمنعه المتصفح)
+    if (WHATSAPP || !SHEET_URL){
+      var NL = String.fromCharCode(10);
+      var text = "رسالة لـ أوس وملك 🤍" + NL + NL + t + (name ? NL + NL + "— " + name : "");
+      window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+    }
+    if (!SHEET_URL){ $("msgTxt").value = ""; return; }
+    btn.disabled = true; status.textContent = "جارٍ الإرسال…";
+    var body = new URLSearchParams({ name: name, message: t });
+    fetch(SHEET_URL, { method: "POST", body: body })
+      .then(function(r){ return r.text(); })
+      .then(function(res){
+        if (res.trim() !== "ok") throw new Error(res);
+        status.textContent = "وصلت رسالتكم لأوس وملك، شكراً لكم 🤍";
+        wallItems.unshift({ name: name, message: t }); renderWall();
+        $("msgTxt").value = ""; $("msgName").value = "";
+      })
+      .catch(function(){ status.textContent = "تعذّر الإرسال، حاولوا مرة أخرى."; })
+      .then(function(){ btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
