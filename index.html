@@ -7,10 +7,13 @@
 <meta name="description" content="دعوة لحضور حفل زفاف الفنان اوس البنا (محمد) و أ. ملك — الخميس ١٠ كانون الأول ٢٠٢٦">
 <meta name="theme-color" content="#4a5640">
 <link rel="icon" type="image/png" href="mersal-favicon.png">
-<link rel="preload" as="image" href="assets/couple.jpg">
+<link rel="preload" as="image" href="assets/monogram.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/tulips-pearls.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap"></noscript>
 <style>
 :root{
   --sage-900:#323b2c;
@@ -26,7 +29,7 @@
   --ink-soft:#7a766c;
   --lace:#f4f1ea;
   --lace-line:#d9d2c4;
-  --lace-bg:url("assets/lace-bg.jpg") center top/min(100vw,736px) auto repeat #f1efea;
+  --lace-bg:url("assets/lace-bg.webp") center top/min(100vw,736px) auto repeat #f1efea;
   --paper-tex:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .42  0 0 0 0 .36  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -183,7 +186,7 @@ main{max-width:520px;margin:0 auto;padding:0 20px 0;text-align:center}
 
 /* message form (inline) */
 .wish-sec{position:relative;isolation:isolate;overflow:hidden;margin:34px -20px 0;padding:30px 20px 34px;background:var(--sage-800)}
-.wish-sec::before{content:"";position:absolute;inset:-8px;z-index:-2;background:url("assets/tulips-pearls.jpg") 50% 40%/cover no-repeat;filter:blur(3px) saturate(.85)}
+.wish-sec::before{content:"";position:absolute;inset:-8px;z-index:-2;background:url("assets/tulips-pearls.webp") 50% 40%/cover no-repeat;filter:blur(3px) saturate(.85)}
 .wish-sec::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg, rgba(50,59,44,.45) 0%, rgba(50,59,44,.5) 55%, rgba(50,59,44,.85) 100%)}
 .wish-sec .msg{color:#f3efe6;text-shadow:0 1px 3px rgba(0,0,0,.35)}
 .wish{width:min(100%,460px);margin:22px auto 0;background:rgba(243,239,230,.08);border:1px solid rgba(243,239,230,.35);border-radius:16px;padding:20px 16px 16px;text-align:center;box-sizing:border-box;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
@@ -241,9 +244,9 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
 
 <!-- ═════════ INTRO ═════════ -->
 <section id="intro" aria-label="حفظ الموعد">
-  <img id="tulipBg" src="assets/tulips-pearls.jpg" alt="" aria-hidden="true">
+  <img id="tulipBg" src="assets/tulips-pearls.webp" fetchpriority="high" decoding="async" width="480" height="853" alt="" aria-hidden="true">
   <div class="frame-wrap">
-    <img src="assets/monogram.png" alt="أ م" width="1034" height="1367">
+    <img src="assets/monogram.webp" alt="أ م" width="640" height="846" fetchpriority="high" decoding="async">
   </div>
   <div class="std">
     <div class="d ltr">10-12-2026</div>
@@ -275,16 +278,16 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
   <p class="invite reveal">بدعـــوة سيادتكم لـ حضــــور حفل زفــاف</p>
 
   <div class="names reveal">
-    <img src="assets/names.png" alt="أوس و ملك" width="1458" height="521">
+    <img src="assets/names.webp" alt="أوس و ملك" width="760" height="272" loading="lazy" decoding="async">
   </div>
 
   <figure class="photo reveal">
-    <img class="tulips" src="assets/tulips-embroidered-cut.webp" alt="" aria-hidden="true" width="343" height="180">
-    <div class="pic"><img src="assets/couple.jpg" alt="الفنان اوس البنا (محمد) و أ. ملك" width="720" height="962"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696"></div>
+    <img class="tulips" src="assets/tulips-embroidered-cut.webp" loading="lazy" alt="" aria-hidden="true" width="343" height="180">
+    <div class="pic"><img src="assets/couple.webp" alt="الفنان اوس البنا (محمد) و أ. ملك" width="520" height="695" loading="lazy" decoding="async"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
   </figure>
 
   <div class="badge reveal" aria-hidden="true">
-    <img src="assets/monogram.png" alt="" width="1034" height="1367" loading="lazy">
+    <img src="assets/monogram-sm.webp" alt="" width="220" height="291" loading="lazy" decoding="async">
   </div>
 
   <p class="will reveal">وذلك بمشيئـــــــــة الله تعـــــــالى</p>
@@ -312,14 +315,14 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
   <p class="done" id="doneMsg" hidden>الليلة ليلتنا… أهلاً بكم</p>
 
   <figure class="bloom row reveal" aria-hidden="true">
-    <img src="assets/tulips-embroidered.jpg" alt="" width="343" height="180" loading="lazy">
+    <img src="assets/tulips-embroidered.webp" alt="" width="343" height="180" loading="lazy">
   </figure>
 
   <section class="pic-section reveal" aria-label="في ذكرى المرحوم سامي صالح البنا">
     <svg class="chandelier reveal" viewBox="0 46 240 226" aria-hidden="true"></svg>
     <h2 class="pic-title">في ذكرى الغالي</h2>
     <figure class="arch father">
-      <div class="pic"><img src="assets/father.jpg" alt="أوس مع والده المرحوم سامي صالح البنا" width="621" height="960" loading="lazy"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
+      <div class="pic"><img src="assets/father.webp" alt="أوس مع والده المرحوم سامي صالح البنا" width="520" height="804" loading="lazy"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
       <figcaption><small>مع والده المرحوم</small>سامي صالح البنـــا</figcaption>
     </figure>
   </section>
@@ -331,7 +334,7 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
   <section class="pic-section reveal" aria-label="العريس">
     <h2 class="pic-title">العريس</h2>
     <figure class="arch groom">
-      <div class="pic"><img src="assets/groom.jpg" alt="العريس الفنان اوس البنا (محمد)" width="720" height="945" loading="lazy"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
+      <div class="pic"><img src="assets/groom.webp" alt="العريس الفنان اوس البنا (محمد)" width="520" height="693" loading="lazy"><img class="lace" src="assets/lace-oval.webp" alt="" aria-hidden="true" width="565" height="696" loading="lazy"></div>
       <figcaption>الفنان اوس البنا (محمد)</figcaption>
     </figure>
   </section>
@@ -364,7 +367,7 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
     </ul>
   </div>
 
-  <img class="table reveal" src="assets/table.jpg" alt="" aria-hidden="true" width="735" height="551" loading="lazy">
+  <img class="table reveal" src="assets/table.webp" alt="" aria-hidden="true" width="735" height="551" loading="lazy">
   <p class="credit reveal">لكل مناسبة، رسالة تستحق أن تصل<br>بواسطة مرسال<br><span class="ltr">Insta: @mersal.invites</span></p>
 </main>
 </div>
@@ -543,7 +546,10 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
     });
     ringLeaves(160, true);                       // front half
   }
-  document.querySelectorAll(".chandelier").forEach(chandelier);
+  // build the (heavy) chandelier SVGs after first paint so they don't block the intro
+  function buildChandeliers(){ document.querySelectorAll(".chandelier").forEach(chandelier); }
+  if (window.requestIdleCallback) requestIdleCallback(buildChandeliers, { timeout: 1500 });
+  else setTimeout(buildChandeliers, 200);
 
   /* ---------- open invitation ---------- */
   function openInvite(){
