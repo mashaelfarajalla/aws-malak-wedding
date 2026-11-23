@@ -7,11 +7,10 @@
 <meta name="description" content="دعوة لحضور حفل زفاف الفنان اوس البنا (محمد) و أ. ملك — الخميس ١٠ كانون الأول ٢٠٢٦">
 <meta name="theme-color" content="#4a5640">
 <link rel="icon" type="image/png" href="mersal-favicon.png">
-<link rel="preload" as="image" href="assets/monogram.webp" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="assets/tulips-pearls.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/monogram.webp" imagesrcset="assets/monogram-420.webp 420w, assets/monogram.webp 640w" imagesizes="min(74vw, 320px)" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/tulips-pearls-sm.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Alexandria:wght@300;400;500&family=Cormorant+Garamond:wght@500;600&display=swap"></noscript>
 <style>
@@ -37,9 +36,11 @@
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   font-family:"Alexandria",system-ui,sans-serif;font-weight:300;color:var(--ink);
-  background:var(--lace-bg);min-height:100vh;overflow-x:hidden;line-height:1.9;
+  background:#f1efea;min-height:100vh;overflow-x:hidden;line-height:1.9;
 }
 body.locked{overflow:hidden;height:100vh}
+/* keep the page (and its images) out of the way until the invitation is opened, so the intro loads first */
+body.locked .paper{display:none}
 img{display:block;max-width:100%}
 .ltr{direction:ltr;unicode-bidi:isolate}
 
@@ -244,9 +245,9 @@ body:not(.locked) .dock{transform:translate(-50%,0);opacity:1}
 
 <!-- ═════════ INTRO ═════════ -->
 <section id="intro" aria-label="حفظ الموعد">
-  <img id="tulipBg" src="assets/tulips-pearls.webp" fetchpriority="high" decoding="async" width="480" height="853" alt="" aria-hidden="true">
+  <img id="tulipBg" src="assets/tulips-pearls-sm.webp" decoding="async" width="240" height="427" alt="" aria-hidden="true">
   <div class="frame-wrap">
-    <img src="assets/monogram.webp" alt="أ م" width="640" height="846" fetchpriority="high" decoding="async">
+    <img src="assets/monogram.webp" srcset="assets/monogram-420.webp 420w, assets/monogram.webp 640w" sizes="min(74vw, 320px)" alt="أ م" width="640" height="846" fetchpriority="high" decoding="async">
   </div>
   <div class="std">
     <div class="d ltr">10-12-2026</div>
